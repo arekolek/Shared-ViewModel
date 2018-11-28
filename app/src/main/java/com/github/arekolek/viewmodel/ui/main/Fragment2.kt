@@ -28,7 +28,7 @@ class Fragment2 : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(parentFragment!!, NewInstanceFactory()).get()
         viewModel.text.observe(this) {
-            textView.text = "Clicked $it times"
+            textView.text = it
         }
     }
 
