@@ -5,9 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
-import androidx.lifecycle.get
 import com.github.arekolek.viewmodel.R
 import kotlinx.android.synthetic.main.fragment2.*
 
@@ -17,7 +14,7 @@ class Fragment2 : Fragment() {
         fun newInstance() = Fragment2()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels { requireNotNull(parentFragment) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +23,6 @@ class Fragment2 : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(parentFragment!!, NewInstanceFactory()).get()
         viewModel.text.observe(this) {
             textView.text = it
         }
