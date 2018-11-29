@@ -20,10 +20,10 @@ class MainFragment : androidx.fragment.app.Fragment() {
     ): View = inflater.inflate(R.layout.main_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    childFragmentManager.transaction {
-        add(R.id.main, Fragment1.newInstance())
-        add(R.id.main, Fragment2.newInstance())
-    }
+        childFragmentManager.transaction {
+            add(R.id.main, Fragment1.newInstance())
+            add(R.id.main, Fragment2.newInstance())
+        }
     }
 
 }
