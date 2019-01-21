@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.github.arekolek.viewmodel.R
 import kotlinx.android.synthetic.main.fragment2.*
 
@@ -14,7 +15,7 @@ class Fragment2 : Fragment() {
         fun newInstance() = Fragment2()
     }
 
-    private val viewModel: MainViewModel by viewModels { requireNotNull(parentFragment) }
+    private val viewModel: MainViewModel by viewModels(::requireParentFragment)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
