@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.transaction
+import androidx.fragment.app.commit
 import com.github.arekolek.viewmodel.R
 
 class MainFragment : androidx.fragment.app.Fragment() {
@@ -20,9 +20,11 @@ class MainFragment : androidx.fragment.app.Fragment() {
     ): View = inflater.inflate(R.layout.main_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        childFragmentManager.transaction {
-            add(R.id.main, Fragment1.newInstance())
-            add(R.id.main, Fragment2.newInstance())
+        if (savedInstanceState == null) {
+            childFragmentManager.commit {
+                add(R.id.main, Fragment1.newInstance())
+                add(R.id.main, Fragment2.newInstance())
+            }
         }
     }
 
